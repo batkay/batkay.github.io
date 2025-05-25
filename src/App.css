@@ -137,6 +137,11 @@ section {
   box-shadow: 0 1px 4px rgba(0,0,0,0.04);
 }
 
+body[data-theme="dark"] .project-card {
+  background: #2d2d35; /* A lighter grey for dark mode */
+  color: #f1f1f1;
+}
+
 .project-card.expanded {
   background: #e0d7f7;     /* Light purple for light mode */
   color: #222;
