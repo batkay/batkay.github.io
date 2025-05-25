@@ -180,6 +180,12 @@ body[data-theme="dark"] .project-card.expanded {
   display: block;
 }
 
+.badge-container {
+  background: #fff; /* Keeps the area around the badge white in dark mode */
+  padding: 1rem;
+  border-radius: 8px;
+  display: inline-block;
+}
 
 footer {
   text-align: center;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 const projects = [
   {
@@ -24,19 +24,53 @@ const projects = [
   }
 ];
 
-
 function Projects() {
+  const [expanded, setExpanded] = useState(null);
+
+  const handleExpand = (idx) => {
+    setExpanded(expanded === idx ? null : idx);
+  };
+
   return (
-    <section>
+    <section id="projects">
       <h2>Projects</h2>
       <div className="projects">
-        {projects.map((project) => (
-          <div className="project-card" key={project.title}>
+        {projects.map((project, idx) => (
+          <div
+            className={`project-card ${expanded === idx ? "expanded" : ""}`}
+            key={project.title}
+            onClick={() => handleExpand(idx)}
+            style={{ cursor: "pointer" }}
+          >
+            <img
+              src={project.thumbnail}
+              alt={`${project.title} thumbnail`}
+              className="project-thumbnail"
+            />
             <h3>{project.title}</h3>
             <p>{project.description}</p>
-            <a href={project.link} target="_blank" rel="noopener noreferrer">
-              View on GitHub
-            </a>
+            {expanded === idx && (
+              <div className="project-details">
+                <p>{project.details}</p>
+                <div className="project-images">
+                  {project.images.map((img, i) => (
+                    <img
+                      key={i}
+                      src={img}
+                      alt={`${project.title} screenshot ${i + 1}`}
+                      className="project-image"
+                    />
+                  ))}
+                </div>
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View on GitHub
+                </a>
+              </div>
+            )}
           </div>
         ))}
       </div>
