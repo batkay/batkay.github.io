@@ -1,38 +1,185 @@
-.App {
-  text-align: center;
+:root {
+  --bg: #f9f9f9;
+  --text: #222;
+  --container-bg: #fff;
+  --navbar-bg: #8000ff;
+  --navbar-text: #fff;
+  --navbar-link-bg: #fff;
+  --navbar-link-text: #007acc;
+  --navbar-link-hover-bg: #005fa3;
+  --navbar-link-hover-text: #fff;
+  --project-bg: #f0f4f8;
+  --footer-text: #888;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body[data-theme="dark"] {
+  --bg: #181a1b;
+  --text: #f1f1f1;
+  --container-bg: #23272a;
+  /* --navbar-bg: #23272a;  <-- removed, so it stays blue */
+  --navbar-text: #f1f1f1;
+  --navbar-link-bg: #181a1b;
+  --navbar-link-text: #f1f1f1;
+  --navbar-link-hover-bg: #007acc;
+  --navbar-link-hover-text: #fff;
+  --project-bg: #23272a;
+  --footer-text: #aaa;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body[data-theme="dark"] a {
+  color: #66aaff; /* Light blue shade */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body[data-theme="dark"] a:visited {
+  color: #66aaff;
+}
+
+body[data-theme="dark"] a:hover,
+body[data-theme="dark"] a:focus {
+  color: #99cfff;
+  text-decoration: underline;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.3s, color 0.3s;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: var(--navbar-bg);
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: background 0.3s;
+}
+
+.navbar-content {
+  max-width: 800px;
+  margin: 0 auto;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  padding: 0.5rem 2rem;
 }
 
-.App-link {
-  color: #61dafb;
+.navbar-title {
+  color: var(--navbar-text);
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.navbar-links button {
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
+  background: var(--navbar-link-bg);
+  color: var(--navbar-link-text);
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.navbar-links button:hover {
+  background: var(--navbar-link-hover-bg);
+  color: var(--navbar-link-hover-text);
+}
+
+.theme-toggle {
+  border: 1px solid var(--navbar-link-text);
+  background: transparent;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: var(--container-bg);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.avatar {
+  width: 100px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+section {
+  margin-bottom: 2rem;
+  scroll-margin-top: 80px;
+}
+
+.projects {
+  display: block;
+}
+
+
+.project-card {
+  background: var(--project-bg);
+  padding: 1rem;
+  border-radius: 6px;
+  flex: 1 1 250px;
+  min-width: 200px;
+  transition: background 0.3s, box-shadow 0.3s;
+  margin-bottom: 1rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+
+.project-card.expanded {
+  background: #e0d7f7;     /* Light purple for light mode */
+  color: #222;
+  box-shadow: 0 4px 16px rgba(128,0,255,0.10);
+}
+
+body[data-theme="dark"] .project-card.expanded {
+  background: #3d0066;     /* Dark purple for dark mode */
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(61,0,102,0.15);
+}
+
+.project-details {
+  margin-top: 1rem;
+}
+
+.project-images {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.project-image {
+  width: 150px;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+.project-thumbnail {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+
+footer {
+  text-align: center;
+  color: var(--footer-text);
+  font-size: 0.9rem;
+  margin-top: 2rem;
+  transition: color 0.3s;
 }
