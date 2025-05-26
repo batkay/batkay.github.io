@@ -13,3 +13,78 @@
   transform: translateY(0);
   transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1), opacity 0.4s, transform 0.4s;
 }
+.project-card {
+  background: var(--project-bg);
+  padding: 1rem;
+  border-radius: 6px;
+  min-width: 200px;
+  margin-bottom: 1rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  transition: background 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  position: relative;
+}
+
+body[data-theme="dark"] .project-card {
+  background: #2d2d35; /* A lighter grey for dark mode */
+  color: #f1f1f1;
+}
+
+.project-card.expanded {
+  background: #e0d7f7;     /* Light purple for light mode */
+  color: #222;
+  box-shadow: 0 4px 16px rgba(128,0,255,0.10);
+}
+
+body[data-theme="dark"] .project-card.expanded {
+  background: #3d0066;     /* Dark purple for dark mode */
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(61,0,102,0.15);
+}
+
+.project-details {
+  margin-top: 1rem;
+}
+
+.project-images {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.project-image {
+  width: 150px;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+.project-thumbnail {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.project-card:hover {
+  background: #d6c2f7; /* A more pronounced hover color for light mode */
+  box-shadow: 0 4px 16px rgba(128,0,255,0.10);
+}
+
+body[data-theme="dark"] .project-card:hover {
+  background: #4e1a8a; /* A lighter purple for hover in dark mode */
+}
+
+.expand-arrow {
+  margin-left: 0.5em;
+  font-size: 1.2em;
+  display: inline-block;
+  transition: transform 0.3s;
+  vertical-align: middle;
+}
+
+.project-card.expanded .expand-arrow {
+  transform: rotate(180deg); /* Points up when expanded */
+}

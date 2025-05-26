@@ -32,10 +32,10 @@ function App() {
         <div className="navbar-content">
           <span className="navbar-title">Your Name</span>
           <button
-            className="navbar-hamburger"
+            className={`navbar-hamburger${menuOpen ? " open" : ""}`}
             onClick={() => setMenuOpen((open) => !open)}
             aria-label="Toggle navigation"
-          >
+            >
             {/* Simple hamburger icon */}
             <span />
             <span />

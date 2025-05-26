@@ -48,7 +48,12 @@ function Projects() {
               alt={`${project.title} thumbnail`}
               className="project-thumbnail"
             />
-            <h3>{project.title}</h3>
+            <h3>
+              {project.title}
+              <span className="expand-arrow" aria-hidden="true">
+                ▼
+              </span>
+            </h3>
             <p>{project.description}</p>
             <div className={`project-details-animated${expanded === idx ? " expanded" : ""}`}>
                 <>
