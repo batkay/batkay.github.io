@@ -62,6 +62,7 @@ function App() {
       </nav>
 
       <div className="container">
+        <div className="content-inner">
         <header>
           <img
             src="https://avatars.githubusercontent.com/u/9919?s=200&v=4"
@@ -86,6 +87,7 @@ function App() {
         <footer>
           <p>&copy; {new Date().getFullYear()} Your Name</p>
         </footer>
+      </div>
       </div>
     </div>
   );
