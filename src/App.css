@@ -14,8 +14,8 @@
 
 body {
   margin: 0;
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background: var(--bg);
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
+    "Helvetica", "Arial", "Lucida Grande", sans-serif;  background: var(--bg);
   color: var(--text);
   transition: background 0.3s, color 0.3s;
 }
