@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Projects.css";
 
 const projects = [
   {
@@ -37,7 +38,7 @@ function Projects() {
       <div className="projects">
         {projects.map((project, idx) => (
           <div
-            className={`project-card ${expanded === idx ? "expanded" : ""}`}
+            className={`project-card${expanded === idx ? " expanded" : ""}`}
             key={project.title}
             onClick={() => handleExpand(idx)}
             style={{ cursor: "pointer" }}
@@ -49,28 +50,29 @@ function Projects() {
             />
             <h3>{project.title}</h3>
             <p>{project.description}</p>
-            {expanded === idx && (
-              <div className="project-details">
-                <p>{project.details}</p>
-                <div className="project-images">
-                  {project.images.map((img, i) => (
-                    <img
-                      key={i}
-                      src={img}
-                      alt={`${project.title} screenshot ${i + 1}`}
-                      className="project-image"
-                    />
-                  ))}
-                </div>
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  View on GitHub
-                </a>
-              </div>
-            )}
+            <div className={`project-details-animated${expanded === idx ? " expanded" : ""}`}>
+                <>
+                    <p>{project.details}</p>
+                    <div className="project-images">
+                    {project.images.map((img, i) => (
+                        <img
+                        key={i}
+                        src={img}
+                        alt={`${project.title} screenshot ${i + 1}`}
+                        className="project-image"
+                        />
+                    ))}
+                    </div>
+                    <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >
+                    View on GitHub
+                    </a>
+                </>
+            </div>
+
           </div>
         ))}
       </div>

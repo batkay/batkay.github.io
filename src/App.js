@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import About from "./About";
 import Projects from "./Projects";
 import Contact from "./Contact";
+import Badge from "./Badge";
 import "./App.css";
 
 function App() {
@@ -38,7 +39,7 @@ function App() {
               onClick={() => setDarkMode((m) => !m)}
               aria-label="Toggle dark mode"
             >
-              {darkMode ? "🌙 Dark" : "☀️ Light"}
+              {darkMode ? "🌙" : "☀️"}
             </button>
           </div>
         </div>
@@ -53,15 +54,8 @@ function App() {
           />
           <h1>Your Name</h1>
           <p>Web Developer | Designer | Creator</p>
-          
-          <div
-            data-iframe-width="150"
-            data-iframe-height="270"
-            data-share-badge-id="29aa998b-b0d2-428f-bb40-9271a8117ab3"
-            data-share-badge-host="https://www.credly.com"
-          ></div>
         </header>
-
+        <Badge/>
         <About sectionRef={aboutRef} />
         <div ref={projectsRef}>
           <Projects />
