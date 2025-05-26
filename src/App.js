@@ -11,6 +11,7 @@ function App() {
   const contactRef = useRef(null);
 
   const [darkMode, setDarkMode] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const saved = localStorage.getItem("darkMode");
@@ -30,17 +31,32 @@ function App() {
       <nav className="navbar">
         <div className="navbar-content">
           <span className="navbar-title">Your Name</span>
-          <div className="navbar-links">
-            <button onClick={() => scrollToSection(aboutRef)}>About</button>
-            <button onClick={() => scrollToSection(projectsRef)}>Projects</button>
-            <button onClick={() => scrollToSection(contactRef)}>Contact</button>
-            <button
-              className="theme-toggle"
-              onClick={() => setDarkMode((m) => !m)}
-              aria-label="Toggle dark mode"
-            >
-              {darkMode ? "🌙" : "☀️"}
-            </button>
+          <button
+            className="navbar-hamburger"
+            onClick={() => setMenuOpen((open) => !open)}
+            aria-label="Toggle navigation"
+          >
+            {/* Simple hamburger icon */}
+            <span />
+            <span />
+            <span />
+          </button>
+          <div className={`navbar-links${menuOpen ? " open" : ""}`}>
+            <div className="navbar-links-center">
+
+              <button onClick={() => { scrollToSection(aboutRef); setMenuOpen(false); }}>About</button>
+              <button onClick={() => { scrollToSection(projectsRef); setMenuOpen(false); }}>Projects</button>
+              <button onClick={() => { scrollToSection(contactRef); setMenuOpen(false); }}>Contact</button>
+            </div>
+            <div className="navbar-links-right">
+              <button
+                className="theme-toggle"
+                onClick={() => setDarkMode((m) => !m)}
+                aria-label="Toggle dark mode"
+              >
+                {darkMode ? "🌙" : "☀️"}
+              </button>
+            </div>
           </div>
         </div>
       </nav>
@@ -56,11 +72,16 @@ function App() {
           <p>Web Developer | Designer | Creator</p>
         </header>
         <Badge/>
-        <About sectionRef={aboutRef} />
-        <div ref={projectsRef}>
-          <Projects />
-        </div>
-        <Contact sectionRef={contactRef} />
+        <section id="about" ref={aboutRef} className="section-about">
+          <About/>
+        </section>
+        <section id="projects" ref={projectsRef} className="section-projects">
+          <Projects/>
+        </section>
+
+        <section id="contact" ref={contactRef} className="section-contact">
+          <Contact sectionRef={contactRef} className="section-contact"/>
+        </section>
 
         <footer>
           <p>&copy; {new Date().getFullYear()} Your Name</p>

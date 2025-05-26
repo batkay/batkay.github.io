@@ -48,23 +48,40 @@ body {
   transition: background 0.3s, color 0.3s;
 }
 
-.navbar {
-  position: sticky;
-  top: 0;
-  width: 100%;
-  background: var(--navbar-bg);
-  z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  transition: background 0.3s;
+.section-about {
+  background: linear-gradient(135deg, #f1eafe 0%, #a18cd1 50%, #fbc2eb 100%);
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  padding: 2rem 1rem;
 }
 
-.navbar-content {
-  max-width: 800px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.5rem 2rem;
+.section-projects {
+  background: linear-gradient(135deg, #e0d7f7 0%, #8000ff 60%, #ffecd2 100%);
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  padding: 2rem 1rem;
+}
+
+.section-contact {
+  background: linear-gradient(135deg, #e7f3ff 0%, #43cea2 60%, #185a9d 100%);
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  padding: 2rem 1rem;
+}
+
+body[data-theme="dark"] .section-about {
+  background: linear-gradient(135deg, #23272a 0%, #3d0066 60%, #a18cd1 100%);
+  border: 1px solid #3d0066;
+}
+
+body[data-theme="dark"] .section-projects {
+  background: linear-gradient(135deg, #3d0066 0%, #8000ff 60%, #23272a 100%);
+  border: 1px solid #8000ff;
+}
+
+body[data-theme="dark"] .section-contact {
+  background: linear-gradient(135deg, #181a1b 0%, #185a9d 60%, #43cea2 100%);
+  border: 1px solid #185a9d;
 }
 
 .navbar-title {
@@ -74,7 +91,6 @@ body {
 }
 
 .navbar-links {
-  display: flex;
   align-items: center;
   flex-wrap: nowrap;
 }
@@ -94,6 +110,148 @@ body {
 .navbar-links button:hover {
   background: var(--navbar-link-hover-bg);
   color: var(--navbar-link-hover-text);
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: var(--navbar-bg);
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: background 0.3s;
+}
+
+.navbar-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.navbar-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  margin-left: 1rem;
+  z-index: 1100;
+}
+.navbar-hamburger span {
+  display: block;
+  width: 24px;
+  height: 3px;
+  background: var(--navbar-link-text);
+  margin: 3px 0;
+  border-radius: 2px;
+  transition: background 0.2s;
+}
+
+/* Hide links and show hamburger on small screens */
+@media (max-width: 600px) {
+  .navbar-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--navbar-bg);
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 1rem;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    display: flex;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition:
+      max-height 0.4s cubic-bezier(0.4,0,0.2,1),
+      opacity 0.3s,
+      transform 0.3s;
+    z-index: 1001;
+    justify-content: space-between;
+
+  }
+
+  .navbar-links-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+  }
+  .navbar-links-center button {
+    width: 100%;
+    margin: 0.5rem 0;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+  }
+
+  .navbar-links button {
+    width: 100%;
+    margin: 0.5rem 0;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+  }
+
+  .navbar-links.open {
+    max-height: 500px; /* Large enough for your links */
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+    transition:
+      max-height 0.4s cubic-bezier(0.4,0,0.2,1),
+      opacity 0.3s,
+      transform 0.3s;
+  }
+
+  .navbar-links-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    min-width: 40px;
+    margin-left: 0.5rem;
+  }
+
+  .navbar-hamburger {
+    display: flex;
+  }
+  .navbar-title {
+    font-size: 1rem;
+  }
+  .theme-toggle {
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
+}
+
+/* On desktop, show links inline and hide hamburger */
+@media (min-width: 601px) {
+  .navbar-links {
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+    position: static;
+    background: none;
+    width: auto;
+    padding: 0;
+    box-shadow: none;
+  }
+  .navbar-hamburger {
+    display: none;
+  }
+  .theme-toggle {
+    margin-right: 3rem;
+  }
 }
 
 .theme-toggle {
