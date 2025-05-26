@@ -10,7 +10,11 @@ function App() {
   const projectsRef = useRef(null);
   const contactRef = useRef(null);
 
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    // Check for saved preference, otherwise default to dark
+    const saved = localStorage.getItem("darkMode");
+    return saved ? saved === "true" : true;
+  });
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
