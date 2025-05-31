@@ -73,8 +73,8 @@ function App() {
             alt="Your Avatar"
             className="avatar"
           />
-          <h1>Your Name</h1>
-          <p>Web Developer | Designer | Creator</p>
+          <h1>Thomas Lang</h1>
+          <p> <a href="https://github.com/batkay" target="_blank" rel="noreferrer">GitHub</a> | <a href="https://www.linkedin.com/in/thlang03/" target="_blank" rel="noreferrer">LinkedIn</a> | <a href="/august_2024_resume.pdf" target="_blank" rel="noreferrer">Resume</a></p>
         </header>
         <Badge/>
         <section id="about" ref={aboutRef} className="section-about">

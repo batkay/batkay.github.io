@@ -17,7 +17,6 @@ const projects = [
     title: "Project Two",
     description: "A brief description of Project Two.",
     details: "Here is a longer explanation of Project Two, what you built, and what technologies you used.",
-    link: "https://github.com/yourusername/project-two",
     thumbnail: "https://via.placeholder.com/300x180?text=Project+Two+Thumb",
     images: [
       "https://via.placeholder.com/300x180?text=Project+Two+Image+1"
@@ -54,7 +53,6 @@ function Projects() {
                 ▼
               </span>
             </h3>
-            <p>{project.description}</p>
             <div className={`project-details-animated${expanded === idx ? " expanded" : ""}`}>
                 <>
                     <p>{project.details}</p>
@@ -68,13 +66,15 @@ function Projects() {
                         />
                     ))}
                     </div>
-                    <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    >
-                    View on GitHub
-                    </a>
+                    {project.link && (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        View on GitHub
+                      </a>
+                    )}
                 </>
             </div>
 
