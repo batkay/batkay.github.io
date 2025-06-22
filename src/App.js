@@ -69,7 +69,7 @@ function App() {
         <div className="content-inner">
         <header>
           <img
-            src="https://avatars.githubusercontent.com/u/9919?s=200&v=4"
+            src={"./face.jpeg"}
             alt="Your Avatar"
             className="avatar"
           />
