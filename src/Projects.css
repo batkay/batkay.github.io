@@ -51,6 +51,13 @@ body[data-theme="dark"] .project-card.expanded {
   gap: 1rem;
   flex-wrap: wrap;
   margin-bottom: 1rem;
+  max-width: 300px;   /* or whatever size you prefer */
+  max-height: 300px;
+  width: auto;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  object-fit: cover;  /* Ensures images are nicely cropped if needed */
 }
 
 .project-image {
@@ -60,12 +67,14 @@ body[data-theme="dark"] .project-card.expanded {
   box-shadow: 0 1px 4px rgba(0,0,0,0.08);
 }
 .project-thumbnail {
-  width: 100%;
-  max-width: 400px;
   height: auto;
   border-radius: 4px;
   margin-bottom: 0.5rem;
   display: block;
+  max-width: 300px;   /* or whatever size you prefer */
+  max-height: 300px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  object-fit: cover;  /* Ensures images are nicely cropped if needed */
 }
 
 .project-card:hover {
@@ -87,4 +96,18 @@ body[data-theme="dark"] .project-card:hover {
 
 .project-card.expanded .expand-arrow {
   transform: rotate(180deg); /* Points up when expanded */
+}
+
+.project-date {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 1rem;
+  color: #888;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  pointer-events: none;
+}
+body[data-theme="dark"] .project-date {
+  color: #b5a8d7;
 }

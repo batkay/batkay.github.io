@@ -3,25 +3,59 @@ import "./Projects.css";
 
 const projects = [
   {
-    title: "Project One",
-    description: "A brief description of Project One.",
-    details: "Here is a longer explanation of Project One, what you built, and what technologies you used.",
-    link: "https://github.com/yourusername/project-one",
-    thumbnail: "https://via.placeholder.com/300x180?text=Project+One+Thumb",
+    title: "Zephyr APDS9960 Driver",
+    details: "I updated the Zephyr driver for an APDS9960 proximity and gesture sensor to be able to function without interrupts and instead check an I2C register for events. Contribution was eventually merged into the codebase, and more work will be done to add support for gesture sensing.",
+    link: "https://github.com/zephyrproject-rtos/zephyr/pull/88624",
+    date: "April 2025",
+    thumbnail: "./zephyrPR.png",
+    images: []
+  },
+  {
+    title: "Capstone",
+    date: "April 2025",
+    details: "My senior capstone PCB uses an nRF52840 MCU to control various servos and an LED strip while taking sensor inputs over I2C. The board is powered off a 3.7V LiPo, which can also be charged from an integrated USB C charging circuit. Unfortunately, due to poor grounding of the MCU and a ground plane behind the trace antenna, the BLE functionality of this board did not work.",
+    link: "https://github.com/batkay/CapstonePCB.git",
+    thumbnail: "./capstonepcb.png",
     images: [
-      "https://via.placeholder.com/300x180?text=Project+One+Image+1",
-      "https://via.placeholder.com/300x180?text=Project+One+Image+2"
+      "./capstonesch.png"
     ]
   },
   {
-    title: "Project Two",
-    description: "A brief description of Project Two.",
-    details: "Here is a longer explanation of Project Two, what you built, and what technologies you used.",
-    thumbnail: "https://via.placeholder.com/300x180?text=Project+Two+Thumb",
+    title: "Yoyo dragon",
+    date: "January 2025",
+    details: "I created a PCB to house a Seeed Studio Xiao and allow it to power a Neopixel LED strip. Using the Xiao's built in IMU, the colors could change according to rotational input, or from BLE data. Xiao was programmed using Zephyr.",
+    link: "https://github.com/batkay/YoyoLights.git",
+    thumbnail: "./yoyopcb.png",
     images: [
-      "https://via.placeholder.com/300x180?text=Project+Two+Image+1"
+      "./yoyosch.png"
     ]
-  }
+  },
+  {
+    title: "Racing PCBs",
+    date: "December 2024",
+    details: "For the FSAE ICE competition, I updated our power distribution board to be able to power components like fans, while also being able to read the current going to each element and send the information over CAN.",
+    thumbnail: "./racingpcb.png",
+    images: [
+      "./racingsch.png"
+    ]
+  },
+  {
+    title: "Robotics PCBs",
+    date: "November 2024",
+    details: "I lead developments on custom boards to distribute power to thrusters and control them with a PWM signal from a STM32 on an underwater submarine robot. Links to talk to a NVIDIA Jetson over SPI were also included. The STM32 was programmed using CubeIDE to send PWM and SPI signals.",
+    thumbnail: "./roboticspcb.png",
+    images: [
+      "./roboticssch.png"
+    ]
+  },
+  {
+    title: "ADAPT Satellite FPGA work",
+    date: "August 2023",
+    details: "I created an interface for data being collected by scintillators connected by an FPGA to be sent to a separate data processing pipeline with an AXI Stream. Inputs and outputs were sent to BRAM, which could be accessed with a Pynq Board's Jupyter Notebook interface.",
+    thumbnail: "./pynq.jpg",
+    link: "https://adapt.physics.wustl.edu/publications/CF2024_hls_taking_flight.pdf",
+    images: []
+  },
 ];
 
 function Projects() {
@@ -42,6 +76,8 @@ function Projects() {
             onClick={() => handleExpand(idx)}
             style={{ cursor: "pointer" }}
           >
+            <span className="project-date">{project.date}</span>
+
             <img
               src={project.thumbnail}
               alt={`${project.title} thumbnail`}
@@ -72,7 +108,7 @@ function Projects() {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        View on GitHub
+                        View Project
                       </a>
                     )}
                 </>
